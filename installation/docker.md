@@ -19,8 +19,6 @@ First, make sure you have installed the docker environment on your service. If n
 
 **If you want the source code to compile docker by yourself, see [Install](source.md)**
 
-Using docker to install the tars framework, there are two images to choose from: framework / tars .
-
 **Note: the difference is whether you want to deploy the business service in the image (not recommended, not convenient for upgrading the tars framework))**
 
 ### 2.1 create a docker network
@@ -52,8 +50,9 @@ docker run -d \
 1. Pull docker image
 
 ```sh
-docker pull tarscloud/framework:stable
+docker pull tarscloud/framework:v2.4.0
 ```
+We highly recommended you to use a specific framework version tags to deploy your environment. Thus you won't be influenced by remote image update.
 
 2. Run docker image
 
@@ -76,7 +75,7 @@ docker run -d \
     -v /etc/localtime:/etc/localtime \
     -p 3000:3000 \
     -p 3001:3001 \
-    tarscloud/framework:stable
+    tarscloud/framework:v2.4.0
 ```
 
 You can access `http://${your_machine_ip}:3000` to enter Tars web management platform.
@@ -126,7 +125,7 @@ docker run -d \
     --ip="172.25.0.4" \
     -v /data/framework-slave:/data/tars \
     -v /etc/localtime:/etc/localtime \
-    docker.tarsyun.com/tarscloud/framework:stable
+    tarscloud/framework:v2.4.0
 ```
 
 **Attention: SLAVE environment is true**
@@ -136,7 +135,7 @@ docker run -d \
 1. Pull image
 
 ```sh
-docker pull tarscloud/tars-node:stable
+docker pull tarscloud/tars-node:latest
 ```
 
 2. Run Node image
@@ -151,7 +150,7 @@ docker run -d \
     -v /data/node:/data/app \
     -v /etc/localtime:/etc/localtime \
     -p 9000-9010:9000-9010 \
-    tarscloud/tars-node:stable
+    tarscloud/tars-node:latest
 ```
 
 - Ports 9000 to 9010 are for your applications. You can add more ports if necessary
@@ -179,7 +178,7 @@ docker --name=tars-framework \
     -v /etc/localtime:/etc/localtime \
     -p 3000:3000 \
     -p 3001:3001 \
-    tarscloud/framework:stable
+    tarscloud/framework:v2.4.0
 ```
 
 - Check whether there is obvious problem with docker output
@@ -210,7 +209,7 @@ services:
       internal:
         ipv4_address: 172.25.1.2
   framework:
-    image: tarscloud/framework:stable
+    image: tarscloud/framework:v2.4.0
     container_name: tars-framework
     ports:
       - "3000:3000"
@@ -233,7 +232,7 @@ services:
     depends_on:
       - mysql
   node:
-    image: tarscloud/tars-node:stable
+    image: tarscloud/tars-node:latest
     container_name: tars-node
     restart: always
     networks:

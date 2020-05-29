@@ -15,6 +15,8 @@ See the detailed introduction [SUMMARY.md](SUMMARY.md).
 For now it supports OS as below:
 
 - Linux
+- Windows
+- Mac
 
 ## Supported languages
 
@@ -49,6 +51,14 @@ docker            |build tars docker script
 ## License
 
 The open-source protocol Tars used is BSD-3-Clause, see [LICENSE.md](license.md).
+
+## Contributing
+
+If you meet any problems never found in historical issues, please submit one!
+
+If you find any bugs or get any new ideas, please submit PR!
+
+**Note: Before you submit PR, please check whether you signed [CLA](cla.md)!!**
 
 ## Contacts
 
